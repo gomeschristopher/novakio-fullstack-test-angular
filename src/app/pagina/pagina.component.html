@@ -1,0 +1,14 @@
+<div class="alert" *ngIf="errorMsg">
+    {{ errorMsg }}
+</div>
+<h2 class="text-center">{{ apiGreeting }}</h2>
+<h3 class="text-center">{{ dateTime | date: 'dd/MM/yyyy h:mm' }}</h3>
+<form #messageForm="ngForm" (ngSubmit)="sendMessage()">
+    <input [(ngModel)]="messageSend" name="messageSend" class="form-input" type="text">
+    <button type="submit" class="btn" [disabled]="messageForm.invalid">
+        {{ isLoading ? 'Carregando...' : 'Enviar' }}
+    </button>
+</form>
+<h3 class="text-center">
+    {{ messageReceived }}
+</h3>
